@@ -74,7 +74,13 @@ const invoiceSchema = new mongoose.Schema({
   cashierName: { 
     type: String, 
     required: true 
-  } // Name of the cashier handling the invoice
+  }, // Name of the cashier handling the invoice
+
+  paymentType: { // Added payment type field
+    type: String,
+    enum: ["ecocash", "Cash", "Transfare"], // Allowed payment types
+    required: true // Payment type should not be null
+  } 
 }, { timestamps: true }); // Automatically manage createdAt and updatedAt fields
 
 // Export the Invoice model based on the invoiceSchema
