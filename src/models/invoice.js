@@ -63,7 +63,18 @@ const invoiceSchema = new mongoose.Schema({
   totalPrice: { 
     type: Number, 
     required: true 
-  } // Total price calculated by summing up all product amounts
+  }, // Total price calculated by summing up all product amounts
+
+  cashierId: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'User', 
+    required: true 
+  }, // Reference to the cashier handling the invoice
+
+  cashierName: { 
+    type: String, 
+    required: true 
+  } // Name of the cashier handling the invoice
 }, { timestamps: true }); // Automatically manage createdAt and updatedAt fields
 
 // Export the Invoice model based on the invoiceSchema
