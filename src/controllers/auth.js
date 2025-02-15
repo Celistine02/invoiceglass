@@ -1,7 +1,7 @@
 const User = require("../models/user"); // Import the User model
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken"); // Import jsonwebtoken for token generation
-const { signupEmailTemplate, signinEmailTemplate } = require("../../utils/notifications"); // Import email templates
+//const { signupEmailTemplate, signinEmailTemplate } = require(""); // Import email templates
 const sendEmail = require("./../middleware/sendEmail"); // Import email sending service
 
 /**
