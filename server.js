@@ -8,9 +8,10 @@ const dbConnect = require("./config/dbConnect");
 const errorHandler = require("./src/middleware/errorHandler");
 const initializeMiddleware = require("./src/middleware/initializeMiddleware");
 const checkSmtpConnection = require("./src/middleware/smtpCheck");
-const deviceRoutes = require("./src/routes/deviceRoutes"); // Import device routes
+const deviceRoutes = require("./src/routes/invoiceRoutes"); // Import device routes
 const localDeviceRoutes = require("./src/routes/localDeviceRoutes"); // Import local device routes
 const authRoutes = require("./src/routes/authRoutes"); // Import auth routes
+const createInvoiceRoutes = require("./src/routes/createInvoiceRoutes"); // Import create invoice routes
 
 // Configuration: Retrieve port from environment variables or set default to 5001
 const PORT = process.env.PORT || 5001;
@@ -83,7 +84,7 @@ if (cluster.isMaster) {
         <head>
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Bookings Project</title>
+          <title>Mobile Services API</title>
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
           <style>
             body {
@@ -136,9 +137,10 @@ if (cluster.isMaster) {
       });
 
       // Add routes for mobile services
-      app.use("/mobileservices", deviceRoutes); // Use device routes
-      app.use("/mobileservices/local", localDeviceRoutes); // Use local device routes
-      app.use("/mobileservices/auth", authRoutes); // Use auth routes
+      app.use("/invoiceglass", deviceRoutes); // Use device routes
+      app.use("/invoiceglass/local", localDeviceRoutes); // Use local device routes
+      app.use("/invoiceglass/auth", authRoutes); // Use auth routes
+      app.use("/invoiceglass/invoices", createInvoiceRoutes); // Use create invoice routes
 
       // Error handling middleware
       app.use(errorHandler);
