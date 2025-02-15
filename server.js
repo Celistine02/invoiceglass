@@ -8,10 +8,10 @@ const dbConnect = require("./config/dbConnect");
 const errorHandler = require("./src/middleware/errorHandler");
 const initializeMiddleware = require("./src/middleware/initializeMiddleware");
 const checkSmtpConnection = require("./src/middleware/smtpCheck");
-const deviceRoutes = require("./src/routes/invoiceRoutes"); // Import device routes
+
 const localDeviceRoutes = require("./src/routes/localDeviceRoutes"); // Import local device routes
 const authRoutes = require("./src/routes/authRoutes"); // Import auth routes
-const createInvoiceRoutes = require("./src/routes/createInvoiceRoutes"); // Import create invoice routes
+const createInvoiceRoutes = require("./src/routes/invoiceRoutes"); // Import create invoice routes
 
 // Configuration: Retrieve port from environment variables or set default to 5001
 const PORT = process.env.PORT || 5001;
@@ -72,7 +72,7 @@ if (cluster.isMaster) {
             (details) => details.family === "IPv4" && !details.internal
           ).address;
 
-        console.log(`Mobile Services API listening on port: ${PORT}`);
+        console.log(`Glass Aluminium Center Invoices listening on port: ${PORT}`);
         console.log(`Server running on IP: ${ip}`);
       });
 
@@ -84,7 +84,7 @@ if (cluster.isMaster) {
         <head>
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Mobile Services API</title>
+          <title>Glass Aluminium Center Invoices</title>
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
           <style>
             body {
@@ -124,20 +124,20 @@ if (cluster.isMaster) {
         </head>
         <body>
           <img src="" alt="" style="width: 100px; height: auto; margin-bottom: 20px;">
-          <h1>Welcome to the Mobile Services API!</h1>
+          <h1>Welcome to the Glass Aluminium Center Invoices!</h1>
           <p>We collect a large amount of data from our customers with their consent. For inquiries, contact us below:</p>
           <div class="developer-info">
-            <p>Developed by Sakiso Digital</p>
-            <p>Github: <a href="https://github.com/SakisoDigital">Sakiso Digital</a></p>
-            <p>Phone: +263712487333</p>
+            <p>Developed by Celistine Chipangura</p>    
+            <p>Github: <a href="https://github.com/Celistine02">Celistine Chipangura</a></p>
+            <p>Phone: +263712543689</p>
           </div>
         </body>
-        </html>  
+        </html>     
         `);
       });
 
       // Add routes for mobile services
-      app.use("/invoiceglass", deviceRoutes); // Use device routes
+      
       app.use("/invoiceglass/local", localDeviceRoutes); // Use local device routes
       app.use("/invoiceglass/auth", authRoutes); // Use auth routes
       app.use("/invoiceglass/invoices", createInvoiceRoutes); // Use create invoice routes
