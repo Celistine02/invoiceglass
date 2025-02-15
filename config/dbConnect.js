@@ -12,9 +12,9 @@ const dbConnect = async () => {
       throw new Error("MONGO_URl is not defined in the environment variables.");
     }
     await mongoose.connect(dbURI);
-    console.log("Sakiso Database connected successfully");
+    console.log("Glass Aluminium Center Database connected successfully");
   } catch (err) {
-    console.error("Sakiso Database connection error:", err);
+    console.error("Glass Aluminium  Center Database connection error:", err);
     // Optionally, rethrow the error if you want to handle it further up the call stack
     throw err;
   }
